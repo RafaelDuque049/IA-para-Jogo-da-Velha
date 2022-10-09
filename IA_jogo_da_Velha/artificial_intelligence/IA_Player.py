@@ -15,8 +15,8 @@ def IA(game, _won_=None):
         'n_moves': 'IA_jogo_da_Velha/artificial_intelligence/moves/numbers_moves.txt'
     }
     
-    num_random, random, num = len((open(link_direct.get("m_random"), 'r')).readlines()),\
-        open(link_direct.get("m_random"), 'r').read(), int()
+    num_random = len((open(link_direct.get("m_random"), 'r')).readlines())
+    random, num = open(link_direct.get("m_random"), 'r').read(), int()
     inicial_game  = str(game)[:]
 
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
@@ -40,11 +40,9 @@ def IA(game, _won_=None):
             with open(link_direct.get("n_moves"), 'w') as moves:
                 moves.write('4000' if deep_learning else '2000')     
         
-        # a váriavel "num" recebi o numero de jogadas aleatórias salvas;
         with open(link_direct.get("n_moves")) as numpt:
             num = numpt.readlines()[0]
         
-        # limpa o histórico salvo de partidas aleatórias e reseta o numero de jogos salvos;
         if int(num) >= (16000 if deep_learning is True else 4000):
             with open(link_direct.get("m_random"), 'w') as close: del close
             with open(link_direct.get("n_moves"), 'w') as moves:

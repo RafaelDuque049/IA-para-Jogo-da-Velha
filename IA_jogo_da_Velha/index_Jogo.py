@@ -23,13 +23,16 @@ try:
         while True:
             part = 0
 
-            if test is True: sleep(1.5)
+            if test is True: 
+                sleep(1.5)
             IA(game)
-            if test is True: visual_game(game)
+            if test is True: 
+                visual_game(game)
 
             if winner('x', game, plays) is True:
                 Ia += 1
-                if test is True: visual_game(game)
+                if test is True: 
+                    visual_game(game)
                 IA(game, _won_=True), IA_Player_Bot(won=True)
                 break
 
@@ -43,14 +46,17 @@ try:
                     print('no one won.\n')
                 break
             
-            if test is True: sleep(1.5)
+            if test is True: 
+                sleep(1.5)
             IA_Player_Bot(game, 'o')
-            if test is True: visual_game(game)
+            if test is True: 
+                visual_game(game)
 
             if winner('o', game, plays) is True:
                 Bot += 1
 
-                if test is True: visual_game(game)
+                if test is True:
+                    visual_game(game)
                 
                 IA_Player_Bot(won=True), IA(game, _won_=False)
                 break
