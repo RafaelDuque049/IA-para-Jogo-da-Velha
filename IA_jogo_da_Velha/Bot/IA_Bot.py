@@ -8,8 +8,7 @@ def IA_Player_Bot(game=[], simb='x', won=False):
     :return: ele retorna uma resposta que se adequa a uma das jogadas salvas.
     :return: it returns an answer that fits one of the saved rolls.
     """     
-    from random import randint
-
+    
     if won is False:
         Folder_move = open('IA_jogo_da_Velha\Game\Function_game\plays.txt', 'r')
         x_o, simb_en, passs = simb, 'o' if simb == 'x' else 'x', True
@@ -35,6 +34,8 @@ def IA_Player_Bot(game=[], simb='x', won=False):
 
         # Função de jogada aleatória
         if passs is True:
+            from random import randint
+            
             while True:
                 move = randint(0, 8)
                 if simb_en not in game[move][0] and x_o not in game[move][0]:

@@ -53,7 +53,7 @@ def del_wrong_plays(game):
 
 
 # Função para retornar as 3 posições mais repetidas;
-def posições(lista):                                          
+def position(lista):                                          
     bigs, list_copy, new_list, num_posi = list(), lista[:], str(), 3
 
     for posi_1 in range(num_posi):
@@ -76,11 +76,11 @@ def posições(lista):
 
 
 # Função para identificar as posições mais repetidas e salvar em forma de lista.
-def identificar():
+def identify():
     moves, moves_in_list = str(), str()
     link_direct = {
         'standard_2': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt',
-        'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/numbers_moves.txt'
+        'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
     with open(link_direct.get("standard_2"), 'r') as fold:
@@ -93,15 +93,19 @@ def identificar():
             if move not in no_repet:
                 list_pos = list([word, 0] for word in move)
                 list_pos.pop(-1), no_repet.append(move)
+                print(f'\n\n{list_pos}\n\n')
 
                 with open(link_direct.get("random"), 'r') as folder_s:
                     for numbs in folder_s:
                         
                         for pos, case in enumerate(list_pos):
                             list_pos[pos][1] += 1 if case[0] == numbs[pos] else 0
-                        nump = posições(list_pos)
+                            
+                        print(f'\n\n{list_pos}\n\n')
+                        nump = position(list_pos)
 
-                        if len(nump) != 4: None
+                        if len(nump) != 4: 
+                            None
                         elif nump not in moves and\
                                 nump not in moves_in_list:
                             moves += nump
