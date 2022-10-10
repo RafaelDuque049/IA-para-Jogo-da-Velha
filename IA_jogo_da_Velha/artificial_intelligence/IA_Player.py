@@ -1,11 +1,6 @@
 # inteligência arficial.
 
 def IA(game, _won_=None):
-    # com a váriavel "deep_learning" recebendo True, a IA vai receber mais dados para identificar\
-    # padrão e aprender a jogar, fazendo ela aprender mais com menos verificações;
-    
-    # ALERT: com essa função ativa, o tempo de verificação é aumentado drasticamente;
-    deep_learning = False
     # quando a váriavel "show_moves" recebendo True, ele vai mostrar as decições tomadas pela IA;
     show_moves = False
     
@@ -26,26 +21,28 @@ def IA(game, _won_=None):
         with open(link_direct.get("m_random"), 'w') as fold:
             fold.write(random), fold.write(read_game(game_p=game))
 
-    # verifica se no jogo que foi perdido, tem uma jogada aprendida salva. se houver será deletada;
     if _won_ is False:
         from artificial_intelligence.moves.identify_pattern import del_wrong_plays
+        
         del_wrong_plays(game=game)
 
     # atualizar o numero que define a quantidade de linhas para haver atualização de aprendizado;
     with open(link_direct.get("n_moves"), 'r') as numb:
         
-        # verificar se pasta com os movimentos não está vazia e corrige para evitar erro;
+        # verificar se pasta com os numeros de movimentos não está vazia
+        # e corrige para evitar erro;
         if len(numb.read()) == 0:
             with open(link_direct.get("n_moves"), 'w') as moves:
-                moves.write('4000' if deep_learning else '2000')     
+                moves.write('2000')     
         
         with open(link_direct.get("n_moves")) as numpt:
             num = numpt.readlines()[0]
         
-        if int(num) >= (16000 if deep_learning is True else 4000):
-            with open(link_direct.get("m_random"), 'w') as close: del close
+        if int(num) >= (4000):
+            with open(link_direct.get("m_random"), 'w') as close: 
+                del close
             with open(link_direct.get("n_moves"), 'w') as moves:
-                moves.write('4000' if deep_learning else '2000')
+                moves.write('2000')
     
     # verifica a partida e faz um movimento a partir dele;
     if _won_ == None:
@@ -63,7 +60,6 @@ def IA(game, _won_=None):
                 _pass_ = False
                 return move_game
 
-        # jogada aleatória caso o jogo não se adequa a nenhuma jogada salva;
         if _pass_:
             from random import randint as rd
             
@@ -89,5 +85,5 @@ def IA(game, _won_=None):
         from artificial_intelligence.moves.identify_pattern import identify 
         
         with open(link_direct.get("n_moves"), 'w') as moves:
-            moves.write(str(int(num)+(4000 if deep_learning else 2000)))
+            moves.write(str(int(num) + 2000))
         identify()

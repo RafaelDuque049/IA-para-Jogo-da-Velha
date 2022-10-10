@@ -93,15 +93,12 @@ def identify():
             if move not in no_repet:
                 list_pos = list([word, 0] for word in move)
                 list_pos.pop(-1), no_repet.append(move)
-                print(f'\n\n{list_pos}\n\n')
 
                 with open(link_direct.get("random"), 'r') as folder_s:
                     for numbs in folder_s:
                         
                         for pos, case in enumerate(list_pos):
                             list_pos[pos][1] += 1 if case[0] == numbs[pos] else 0
-                            
-                        print(f'\n\n{list_pos}\n\n')
                         nump = position(list_pos)
 
                         if len(nump) != 4: 
