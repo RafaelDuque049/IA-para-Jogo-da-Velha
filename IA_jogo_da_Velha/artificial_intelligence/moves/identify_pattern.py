@@ -1,5 +1,6 @@
 
 # Função que chama a IA para fazer a jogada;
+# Function that calls the AI to make the move
 def move_IA(game_game, simb):
     num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game_game])
         
@@ -18,14 +19,17 @@ def move_IA(game_game, simb):
 
 
 # Função para traduzir a lista recebida para o metodo que a IA compreende;
+# Function to translate the received list to the method that the AI understands
 def read_game(game_p):
     play = str()
 
     for word in game_p:
         if word[0] == 'x' or word[0] == 'o':
             play += ('1' if word[0] == 'x' else '0')
+            
         elif word[0] == 'xXx' or word[0] == 'oOo':
-            play += ('1' if word[0] == 'xXx' else '0')              
+            play += ('1' if word[0] == 'xXx' else '0')
+                   
         elif word[0] == '': 
             play += ('2')
             
@@ -33,6 +37,7 @@ def read_game(game_p):
 
 
 # Função para apagar jogadas desnecessarias;
+# Function to delete unnecessary moves
 def del_wrong_plays(game):
     moves_save, standard = str(), ('IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt')
         
@@ -53,6 +58,7 @@ def del_wrong_plays(game):
 
 
 # Função para retornar as 3 posições mais repetidas;
+# Function to return the 4 most repeated positions
 def position(lista):                                          
     bigs, list_copy, new_list, num_posi = list(), lista[:], str(), 3
 
@@ -76,6 +82,7 @@ def position(lista):
 
 
 # Função para identificar as posições mais repetidas e salvar em forma de lista.
+# Function to identify the most repeated positions and save as a list.
 def identify():
     moves, moves_in_list = str(), str()
     link_direct = {

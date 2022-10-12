@@ -2,6 +2,7 @@
 
 def IA(game, _won_=None):
     # quando a váriavel "show_moves" recebendo True, ele vai mostrar as decições tomadas pela IA;
+    # "show moves" when it will receive True, it will make decisions for the AI;
     show_moves = False
     
     
@@ -15,6 +16,7 @@ def IA(game, _won_=None):
     inicial_game  = str(game)[:]
 
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
+    # translate and save the game in a language incomprehensible to the AI;
     if _won_ != None:
         from artificial_intelligence.moves.identify_pattern import read_game
         
@@ -27,10 +29,11 @@ def IA(game, _won_=None):
         del_wrong_plays(game=game)
 
     # atualizar o numero que define a quantidade de linhas para haver atualização de aprendizado;
+    # update the number that defines the number of lines to have a learning update;
     with open(link_direct.get("n_moves"), 'r') as numb:
         
-        # verificar se pasta com os numeros de movimentos não está vazia
-        # e corrige para evitar erro;
+        # verificar se pasta com os numeros de movimentos não está vazia e corrige para evitar erro;
+        # check if the folder with the movement numbers is not empty and correct it to avoid errors;
         if len(numb.read()) == 0:
             with open(link_direct.get("n_moves"), 'w') as moves:
                 moves.write('2000')     
@@ -45,6 +48,7 @@ def IA(game, _won_=None):
                 moves.write('2000')
     
     # verifica a partida e faz um movimento a partir dele;
+    # checks the match and makes a move from it;
     if _won_ == None:
         from artificial_intelligence.moves.identify_pattern import move_IA
         
@@ -81,6 +85,7 @@ def IA(game, _won_=None):
             return game
 
     # define o novo limite de linha;
+    # sets the new line boundary
     if num_random >= int(num):
         from artificial_intelligence.moves.identify_pattern import identify 
         

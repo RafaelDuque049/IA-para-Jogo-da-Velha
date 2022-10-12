@@ -7,7 +7,7 @@ def IA_Player_Bot(game=[], simb='x', won=False):
     
     :return: ele retorna uma resposta que se adequa a uma das jogadas salvas.
     :return: it returns an answer that fits one of the saved rolls.
-    """     
+    """
     
     if won is False:
         Folder_move = open('IA_jogo_da_Velha\Game\Function_game\plays.txt', 'r')

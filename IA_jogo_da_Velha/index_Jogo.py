@@ -25,7 +25,9 @@ try:
 
             if test is True: 
                 sleep(1.5)
+                
             IA(game)
+            
             if test is True: 
                 visual_game(game)
 
@@ -48,7 +50,9 @@ try:
             
             if test is True: 
                 sleep(1.5)
+                
             IA_Player_Bot(game, 'o')
+            
             if test is True: 
                 visual_game(game)
 
