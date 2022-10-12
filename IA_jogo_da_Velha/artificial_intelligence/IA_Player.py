@@ -1,4 +1,4 @@
-# inteligência arficial.
+# artificial intelligence for tic-tac-toe
 
 def IA(game, _won_=None):
     # quando a váriavel "show_moves" recebendo True, ele vai mostrar as decições tomadas pela IA;
