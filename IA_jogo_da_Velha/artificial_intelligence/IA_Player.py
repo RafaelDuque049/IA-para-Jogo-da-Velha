@@ -23,30 +23,14 @@ def IA(game, _won_=None):
         with open(link_direct.get("m_random"), 'w') as fold:
             fold.write(random), fold.write(read_game(game_p=game))
 
+    # Deletar jogadas erradas aprendidas;
+    # Delete learned wrong moves
     if _won_ is False:
         from artificial_intelligence.moves.identify_pattern import del_wrong_plays
         
         del_wrong_plays(game=game)
+            
 
-    # atualizar o numero que define a quantidade de linhas para haver atualização de aprendizado;
-    # update the number that defines the number of lines to have a learning update;
-    with open(link_direct.get("n_moves"), 'r') as numb:
-        
-        # verificar se pasta com os numeros de movimentos não está vazia e corrige para evitar erro;
-        # check if the folder with the movement numbers is not empty and correct it to avoid errors;
-        if len(numb.read()) == 0:
-            with open(link_direct.get("n_moves"), 'w') as moves:
-                moves.write('2000')     
-        
-        with open(link_direct.get("n_moves")) as numpt:
-            num = numpt.readlines()[0]
-        
-        if int(num) >= (4000):
-            with open(link_direct.get("m_random"), 'w') as close: 
-                del close
-            with open(link_direct.get("n_moves"), 'w') as moves:
-                moves.write('2000')
-    
     # verifica a partida e faz um movimento a partir dele;
     # checks the match and makes a move from it;
     if _won_ == None:
@@ -84,11 +68,11 @@ def IA(game, _won_=None):
                 
             return game
 
-    # define o novo limite de linha;
-    # sets the new line boundary
-    if num_random >= int(num):
+    # Função para a IA analisar o histórico de partidas e receber novos resultados para a aprendizagem;
+    # Function for AI to analyze match history and receive new results for learning;
+    if num_random >= 2000:
         from artificial_intelligence.moves.identify_pattern import identify 
         
-        with open(link_direct.get("n_moves"), 'w') as moves:
-            moves.write(str(int(num) + 2000))
-        identify()
+        identify()  
+        with open(link_direct.get("m_random"), 'w') as close: 
+            del close
