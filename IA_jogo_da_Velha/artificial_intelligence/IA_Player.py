@@ -17,7 +17,7 @@ def IA(game, _won_=None):
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
     # translate and save the game in a language incomprehensible to the AI;
     if _won_ != None:
-        from artificial_intelligence.moves.identify_pattern import read_game
+        from artificial_intelligence.Function_IA.identify_pattern import read_game
         
         with open(link_direct.get("m_random"), 'w') as fold:
             fold.write(random), fold.write(read_game(game_p=game))
@@ -25,7 +25,7 @@ def IA(game, _won_=None):
     # Deletar jogadas erradas aprendidas;
     # Delete learned wrong moves
     if _won_ is False:
-        from artificial_intelligence.moves.identify_pattern import del_wrong_plays
+        from artificial_intelligence.Function_IA.identify_pattern import del_wrong_plays
         
         del_wrong_plays(game=game)
             
@@ -33,7 +33,7 @@ def IA(game, _won_=None):
     # verifica a partida e faz um movimento a partir dele;
     # checks the match and makes a move from it;
     if _won_ == None:
-        from artificial_intelligence.moves.identify_pattern import move_IA
+        from artificial_intelligence.Function_IA.identify_pattern import move_IA
         
         _pass_ = True
         
@@ -70,7 +70,7 @@ def IA(game, _won_=None):
     # Função para a IA analisar o histórico de partidas e receber novos resultados para a aprendizagem;
     # Function for AI to analyze match history and receive new results for learning;
     if num_random >= 50:
-        from artificial_intelligence.moves.identify_pattern import identify 
+        from artificial_intelligence.Function_IA.identify_pattern import identify 
         
         identify()  
         with open(link_direct.get("m_random"), 'w') as close: 
