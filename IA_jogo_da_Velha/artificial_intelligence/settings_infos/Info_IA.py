@@ -19,38 +19,34 @@ action = str(input("escolha sua ação: "))
 
 
 if action == '1' or action == '':
-    sleep(.7)
-
-    lines_random, lines_standard = \
-        len((open(link_direct.get("random"), 'r')).readlines()),\
-        len((open(link_direct.get("standard"), 'r')).readlines())
+    lines_random = len((open(link_direct.get("random"), 'r')).readlines())
+    lines_standard = len((open(link_direct.get("standard"), 'r')).readlines())
     
+    sleep(.7)
     print(f'\n{"=-"*40}\nforam salvas no total de ({lines_random}) partidas.\n'\
         f'foram reconhecidas ({lines_standard}) jogadas..\n{"=-"*40}\n')
 
 
 elif action == '2':
-    sleep(.5)
-    lines_random, lines_standard = \
-        len((open(link_direct.get("random"), 'r')).readlines()),\
-        len((open(link_direct.get("standard"), 'r')).readlines())
+    lines_random =len((open(link_direct.get("random"), 'r')).readlines())
+    lines_standard = len((open(link_direct.get("standard"), 'r')).readlines())
     
-    confirm = str(input(f'\n{"=-"*40}\nserá deletado ao todo {lines_random+lines_standard} '
-        'informações(progresso) da IA. deseja mesmo prosseguir? [S/N]: '))
+    sleep(.5)
+    while True:
+        confirm = str(input(f'\n{"=-"*40}\nserá deletado ao todo {lines_random+lines_standard} '
+            'informações(progresso) da IA. deseja mesmo prosseguir? [S/N]: '))
 
-    if confirm.upper() == 'S':
-        sleep(.7)
-        
-        try:
+        if confirm.upper() == 'S':
             del_random = (open(link_direct.get("random"), 'w')).close()
             del_standard = (open(link_direct.get("standard"), 'w')).close()
-
-        finally:
+            
+            sleep(.7)
             print(f'\ninformações de IA deletada com sucesso.\n{"=-"*40}')
 
-    else:
-        print(f'\nfoi cancelado qualquer tipo de ação de deletar informações.'\
-            f'nenhuma informação foi deletada.\n{"=-"*40}\n')
+        elif confirm.upper() == 'N':
+            print(f'\nfoi cancelado qualquer tipo de ação de deletar informações.'\
+                f'nenhuma informação foi deletada.\n{"=-"*40}\n')
+            break
 
 
 elif action == '3':
@@ -61,19 +57,30 @@ elif action == '3':
     
     print(f'\n{"=-"*40}\nopções para deletar:\n\n'
         '1.partidas que foram salvas\n'\
-        '2.jogadas identificadas pela IA\n')
+        '2.jogadas identificadas pela IA')
 
-    choices = str(input('\n(separado por virgula, exemplo: 2, 4 ou 3, 4, 1)'\
-        ' escolha quais informações deletar: '))
+    while True:
+        choices = str(input('\n(separado por virgula, desta forma: 2, 1)'\
+            ' escolha quais informações deletar(Digite o numero zero para cancelar.): '))
+        
+        if choices == '0':
+            print('\nFoi cancelado ações de deletar progresso da IA.\n')
+            break
 
-    if len(choices) != 1:
-        choices = (choices.replace(' ', '')).split(',')
+        try:
+            if len(choices) != 1:
+                choices = (choices.replace(' ', '')).split(',')
 
-    for choice in choices:
-        none = open(info.get(choice), 'w')
-        none.close()
-
-    print('\ninformações deletada com sucesso.\n')
+            for choice in choices:
+                with open(info.get(choice), 'w') as delete:
+                    del delete
+                
+        except (TypeError or IndexError):
+            print('\n/ERRO/\nDigite corretamente quais das opções aparentes deseja deletar.')
+            
+        else:
+            print('\ninformações deletada com sucesso.\n')
+            break
 
 
 elif action == '4':

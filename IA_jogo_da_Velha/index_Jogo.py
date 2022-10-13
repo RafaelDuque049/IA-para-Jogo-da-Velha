@@ -14,7 +14,7 @@ try:
     from Game.Function_game.tools_game import visual_game, winner
 
     test = True if "Y" == (input('play normal game? Y/N:')).upper() else False
-    repet_game = 10 if test is True else 50000
+    repet_game = 10 if test is True else 5000
     print(f'\n{repet_game} games will be played.\n')
 
     while repet != repet_game:

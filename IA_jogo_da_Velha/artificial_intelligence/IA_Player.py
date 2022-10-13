@@ -69,7 +69,7 @@ def IA(game, _won_=None):
 
     # Função para a IA analisar o histórico de partidas e receber novos resultados para a aprendizagem;
     # Function for AI to analyze match history and receive new results for learning;
-    if num_random >= 2000:
+    if num_random >= 50:
         from artificial_intelligence.moves.identify_pattern import identify 
         
         identify()  
