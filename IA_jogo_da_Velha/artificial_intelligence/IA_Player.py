@@ -7,8 +7,7 @@ def IA(game, _won_=None):
     
     
     link_direct = {
-        'm_random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
-        'n_moves': 'IA_jogo_da_Velha/artificial_intelligence/moves/numbers_moves.txt'
+        'm_random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
     num_random = len((open(link_direct.get("m_random"), 'r')).readlines())

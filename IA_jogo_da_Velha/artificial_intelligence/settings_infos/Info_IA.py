@@ -7,8 +7,7 @@ option = {
 }
 link_direct = {
     'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
-    'standard': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt',
-    'updates_moves': 'IA_jogo_da_Velha/artificial_intelligence/moves/numbers_moves.txt'
+    'standard': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt'
 }   
 
 print('\nO que deseja fazer?\n\n'\
@@ -22,15 +21,12 @@ action = str(input("escolha sua ação: "))
 if action == '1' or action == '':
     sleep(.7)
 
-    lines_random, lines_standard, next_update = \
+    lines_random, lines_standard = \
         len((open(link_direct.get("random"), 'r')).readlines()),\
-        len((open(link_direct.get("standard"), 'r')).readlines()), \
-        (open(link_direct.get("updates_moves"), 'r')).readlines()
+        len((open(link_direct.get("standard"), 'r')).readlines())
     
     print(f'\n{"=-"*40}\nforam salvas no total de ({lines_random}) partidas.\n'\
-        f'foram reconhecidas ({lines_standard}) jogadas.\n'\
-        f'a próxima quantidade de jogadas para a IA estudar '\
-        f'é ({next_update[0] if next_update != [] else 0}).\n{"=-"*40}\n')
+        f'foram reconhecidas ({lines_standard}) jogadas..\n{"=-"*40}\n')
 
 
 elif action == '2':
@@ -48,7 +44,6 @@ elif action == '2':
         try:
             del_random = (open(link_direct.get("random"), 'w')).close()
             del_standard = (open(link_direct.get("standard"), 'w')).close()
-            del_next_update = (open(link_direct.get("updates_moves"), 'w')).close()
 
         finally:
             print(f'\ninformações de IA deletada com sucesso.\n{"=-"*40}')
@@ -61,14 +56,12 @@ elif action == '2':
 elif action == '3':
     info = {
         '1': link_direct.get("random"),
-        '2': link_direct.get("standard"),
-        '3': link_direct.get("updates_moves")
+        '2': link_direct.get("standard")
     }
     
     print(f'\n{"=-"*40}\nopções para deletar:\n\n'
         '1.partidas que foram salvas\n'\
-        '2.jogadas identificadas pela IA\n'\
-        '3.o próximo limite de jogos para a IA aprender')
+        '2.jogadas identificadas pela IA\n')
 
     choices = str(input('\n(separado por virgula, exemplo: 2, 4 ou 3, 4, 1)'\
         ' escolha quais informações deletar: '))
