@@ -2,7 +2,8 @@ from time import sleep
 
 option = {
     '1': 'Ver informações da IA(inforamções de Progresso)',
-    '2': 'Resetar a IA(Deletar progresso)'
+    '2': 'Resetar a IA(Deletar progresso)',
+    '3': 'deletar informações separadamente'
 }
 link_direct = {
     'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
@@ -13,7 +14,8 @@ link_direct = {
 print('\nO que deseja fazer?\n\n'\
     f'1.{option.get("1")}\n'\
     f'2.{option.get("2")}\n'\
-    f'3.Calcelar ações\n')
+    f'3.{option.get("3")}\n'\
+    f'4.Calcelar ações\n')
 action = str(input("escolha sua ação: "))
 
 
@@ -57,4 +59,29 @@ elif action == '2':
 
 
 elif action == '3':
+    info = {
+        '1': link_direct.get("random"),
+        '2': link_direct.get("standard"),
+        '3': link_direct.get("updates_moves")
+    }
+    
+    print(f'\n{"=-"*40}\nopções para deletar:\n\n'
+        '1.partidas que foram salvas\n'\
+        '2.jogadas identificadas pela IA\n'\
+        '3.o próximo limite de jogos para a IA aprender')
+
+    choices = str(input('\n(separado por virgula, exemplo: 2, 4 ou 3, 4, 1)'\
+        ' escolha quais informações deletar: '))
+
+    if len(choices) != 1:
+        choices = (choices.replace(' ', '')).split(',')
+
+    for choice in choices:
+        none = open(info.get(choice), 'w')
+        none.close()
+
+    print('\ninformações deletada com sucesso.\n')
+
+
+elif action == '4':
     print('\nfoi cancelado qualquer tipo de ação.\n')
