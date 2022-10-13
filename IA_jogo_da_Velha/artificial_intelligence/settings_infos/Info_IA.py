@@ -1,26 +1,39 @@
 from time import sleep
 
+
+def zero_file(name_folder):
+    with open(name_folder, 'w') as delete:
+        del delete
+
+
+def number_lines(name_folder):
+    with open(name_folder, 'r') as lines:
+        return len(lines.readlines())
+
+
+link_direct = {
+    'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
+    'standard': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt'
+}   
+
 option = {
     '1': 'Ver informações da IA(inforamções de Progresso)',
     '2': 'Resetar a IA(Deletar progresso)',
     '3': 'deletar informações separadamente'
 }
-link_direct = {
-    'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
-    'standard': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt'
-}   
 
 print('\nO que deseja fazer?\n\n'\
     f'1.{option.get("1")}\n'\
     f'2.{option.get("2")}\n'\
     f'3.{option.get("3")}\n'\
     f'4.Calcelar ações\n')
+
 action = str(input("escolha sua ação: "))
 
 
 if action == '1' or action == '':
-    lines_random = len((open(link_direct.get("random"), 'r')).readlines())
-    lines_standard = len((open(link_direct.get("standard"), 'r')).readlines())
+    lines_random = number_lines(link_direct.get("random"))
+    lines_standard = number_lines(link_direct.get("standard"))
     
     sleep(.7)
     print(f'\n{"=-"*40}\nforam salvas no total de ({lines_random}) partidas.\n'\
@@ -28,20 +41,20 @@ if action == '1' or action == '':
 
 
 elif action == '2':
-    lines_random =len((open(link_direct.get("random"), 'r')).readlines())
-    lines_standard = len((open(link_direct.get("standard"), 'r')).readlines())
+    lines_random = number_lines(link_direct.get("random"))
+    lines_standard = number_lines(link_direct.get("standard"))
     
     sleep(.5)
-    while True:
-        confirm = str(input(f'\n{"=-"*40}\nserá deletado ao todo {lines_random+lines_standard} '
+    while True: 
+        confirm = str(input(f'\n{"=-"*40}\nserá deletado ao todo {(lines_random+lines_standard)} '
             'informações(progresso) da IA. deseja mesmo prosseguir? [S/N]: '))
 
         if confirm.upper() == 'S':
-            del_random = (open(link_direct.get("random"), 'w')).close()
-            del_standard = (open(link_direct.get("standard"), 'w')).close()
+            zero_file(link_direct.get("random")), zero_file(link_direct.get("standard"))
             
             sleep(.7)
             print(f'\ninformações de IA deletada com sucesso.\n{"=-"*40}')
+            break
 
         elif confirm.upper() == 'N':
             print(f'\nfoi cancelado qualquer tipo de ação de deletar informações.'\
@@ -72,8 +85,7 @@ elif action == '3':
                 choices = (choices.replace(' ', '')).split(',')
 
             for choice in choices:
-                with open(info.get(choice), 'w') as delete:
-                    del delete
+                zero_file(info.get(choice))
                 
         except (TypeError or IndexError):
             print('\n/ERRO/\nDigite corretamente quais das opções aparentes deseja deletar.')
