@@ -37,7 +37,7 @@ if action == '1' or action == '':
     
     sleep(.7)
     print(f'\n{"=-"*40}\nforam salvas no total de ({lines_random}) partidas.\n'\
-        f'foram reconhecidas ({lines_standard}) jogadas..\n{"=-"*40}\n')
+        f'foram reconhecidas ({lines_standard}) jogadas.\n{"=-"*40}\n')
 
 
 elif action == '2':

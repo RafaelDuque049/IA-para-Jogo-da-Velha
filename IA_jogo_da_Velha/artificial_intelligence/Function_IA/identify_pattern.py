@@ -1,16 +1,16 @@
 
 # Função que chama a IA para fazer a jogada;
 # Function that calls the AI to make the move
-def move_IA(game, simb):
+def move_IA(game, check_symb, symb):
     num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game])
         
     if num_cases != 9:
         with open('IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt', 'r') as moves:
 
             for line in moves.readlines():
-                if game[int(line[0])][0] == simb and \
-                        game[int(line[1])][0] == simb and game[int(line[2])][0] == '':
-                    game[int(line[2])][0] = 'x'
+                if game[int(line[0])][0] == check_symb and \
+                        game[int(line[1])][0] == check_symb and game[int(line[2])][0] == '':
+                    game[int(line[2])][0] = symb
                     break        
         return game
 

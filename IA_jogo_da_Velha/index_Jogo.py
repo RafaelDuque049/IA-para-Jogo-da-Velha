@@ -10,29 +10,34 @@ none = [plays.append([int(line[n])-1 for n in [1, 5, 9]]) \
     if line.startswith('_') else None for line in folder.readlines()]
 
 try:
+    from random import choice
     from time import sleep
-    from Game.Function_game.tools_game import visual_game, winner
 
-    test = True if "Y" == (input('play normal game? Y/N:')).upper() else False
+    from Game.Function_game.tools_game import visual_game, winner
+    
+    
+    test = True if "Y" == (input('play normal game? [Y/N]:')).upper() else False
     repet_game = 10 if test is True else 5000
     print(f'\n{repet_game} games will be played.\n')
 
     while repet != repet_game:
-        game = list([''] for num in range(9))
+        symb_game = choice(['x', 'o', 'o', 'x'])
+        game = list([''] for x in range(9))
 
         while True:
             part = 0
 
             if test is True: 
-                sleep(1.5)
+                sleep(1)
                 
-            IA(game)
+            IA(game, symb="x" if symb_game == "o" else "o")
             
             if test is True: 
                 visual_game(game)
 
             if winner('x', game, plays) is True:
                 Ia += 1
+                
                 if test is True: 
                     visual_game(game)
                 IA(game, _won_=True), IA_Player_Bot(won=True)
@@ -48,10 +53,11 @@ try:
                     print('no one won.\n')
                 break
             
+            
             if test is True: 
-                sleep(1.5)
+                sleep(1)
                 
-            IA_Player_Bot(game, 'o')
+            IA_Player_Bot(game, symb_game)
             
             if test is True: 
                 visual_game(game)
@@ -62,13 +68,13 @@ try:
                 if test is True:
                     visual_game(game)
                 
-                IA_Player_Bot(won=True), IA(game, _won_=False)
+                IA_Player_Bot(won=True), IA(game, _won_=True)
                 break
         
         repet += 1
         if repet != repet_game:
             print(f'\r{repet}', end='')
-        test = True if repet == repet_game-1 else test
+        test = (True if repet == repet_game-1 else test)
         
 except KeyboardInterrupt:
     print('\ninterrupted program.')

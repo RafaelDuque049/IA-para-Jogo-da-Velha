@@ -1,17 +1,25 @@
 # artificial intelligence for tic-tac-toe
 
-def IA(game, _won_=None):
+def IA(game, symb='x' ,_won_=None):
+    """
+    :param-game: receives the current status of the game as a parameter.
+    :param-symb: receive which symbol received to play.
+    :param-_won_: receives the information whether the match was won or not.
+    
+    :return: returns a best move at the moment according to the AI's decision.
+    """
+    
     # quando a váriavel "show_moves" recebendo True, ele vai mostrar as decições tomadas pela IA;
     # "show moves" when it will receive True, it will make decisions for the AI;
     show_moves = False
     
     
     link_direct = {
-        'm_random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
+        'moves_random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
-    num_random = len((open(link_direct.get("m_random"), 'r')).readlines())
-    random = open(link_direct.get("m_random"), 'r').read()
+    num_random = len((open(link_direct.get("moves_random"), 'r')).readlines())
+    random = open(link_direct.get("moves_random"), 'r').read()
     inicial_game  = str(game)[:]
 
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
@@ -19,12 +27,12 @@ def IA(game, _won_=None):
     if _won_ != None:
         from artificial_intelligence.Function_IA.identify_pattern import read_game
         
-        with open(link_direct.get("m_random"), 'w') as fold:
+        with open(link_direct.get("moves_random"), 'w') as fold:
             fold.write(random), fold.write(read_game(game_p=game))
 
     # Deletar jogadas erradas aprendidas;
     # Delete learned wrong moves
-    if _won_ is False:
+    if _won_ is True:
         from artificial_intelligence.Function_IA.identify_pattern import del_wrong_plays
         
         del_wrong_plays(game=game)
@@ -34,12 +42,11 @@ def IA(game, _won_=None):
     # checks the match and makes a move from it;
     if _won_ == None:
         from artificial_intelligence.Function_IA.identify_pattern import move_IA
-        
+
         _pass_ = True
-        
         for action in ['x', 'o']:
             if _pass_:
-                move_game = move_IA(game=game, simb=action)
+                move_game = move_IA(game=game, symb=symb ,check_symb=action)
                 
             if str(move_game) != inicial_game:
                 if show_moves: 
@@ -59,7 +66,7 @@ def IA(game, _won_=None):
  
                 if 'o' not in game[play_move][0] and \
                         'x' not in game[play_move][0] or num_posi == 9:
-                    game[play_move][0] = 'x'
+                    game[play_move][0] = symb
                     
                     if show_moves: 
                         print('random play;')
@@ -69,9 +76,9 @@ def IA(game, _won_=None):
 
     # Função para a IA analisar o histórico de partidas e receber novos resultados para a aprendizagem;
     # Function for AI to analyze match history and receive new results for learning;
-    if num_random >= 50:
+    if num_random >= 500:
         from artificial_intelligence.Function_IA.identify_pattern import identify 
         
         identify()  
-        with open(link_direct.get("m_random"), 'w') as close: 
+        with open(link_direct.get("moves_random"), 'w') as close: 
             del close
