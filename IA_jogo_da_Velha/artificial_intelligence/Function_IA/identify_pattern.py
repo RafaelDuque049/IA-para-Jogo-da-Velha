@@ -1,21 +1,18 @@
 
 # Função que chama a IA para fazer a jogada;
 # Function that calls the AI to make the move
-def move_IA(game_game, simb):
-    num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game_game])
+def move_IA(game, simb):
+    num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game])
         
     if num_cases != 9:
         with open('IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt', 'r') as moves:
-            _cont_ = True
 
-            for line in moves.readlines():  
-                for x in range(3):
-                    if game_game[int(line[0])][0] == simb and game_game[int(line[1])]\
-                        [0] == simb and game_game[int(line[2])][0] == '':
-                        game_game[int(line[2])][0], _cont_ = 'x', False
-                        break
-                if _cont_ is False: break
-            return game_game
+            for line in moves.readlines():
+                if game[int(line[0])][0] == simb and \
+                        game[int(line[1])][0] == simb and game[int(line[2])][0] == '':
+                    game[int(line[2])][0] = 'x'
+                    break        
+        return game
 
 
 # Função para traduzir a lista recebida para o metodo que a IA compreende;
@@ -62,12 +59,12 @@ def del_wrong_plays(game):
 def position(lista):                                          
     bigs, list_copy, new_list, num_posi = list(), lista[:], str(), 3
 
-    for posi_1 in range(num_posi):
+    for x in range(num_posi):
         pos = number = int()
 
-        for posi, posi_1 in enumerate(list_copy):
-            if posi_1[1] > number:
-                number, pos = posi_1[1], posi
+        for posi, posi_2 in enumerate(list_copy):
+            if posi_2[1] > number:
+                number, pos = posi_2[1], posi
 
         bigs.append(list_copy[pos][1]), list_copy.pop(list_copy.index(list_copy[pos]))
 
@@ -77,7 +74,8 @@ def position(lista):
             if numb[1] == num:
                 new_list += str(posis)
 
-    new_list = new_list[:num_posi-1] if len(new_list) > num_posi else new_list
+    new_list = (new_list[:num_posi-1] if len(new_list) > num_posi else new_list)
+    
     return (new_list+'\n')
 
 
@@ -85,6 +83,7 @@ def position(lista):
 # Function to identify the most repeated positions and save as a list.
 def identify():
     moves, moves_in_list = str(), str()
+    
     link_direct = {
         'standard_2': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt',
         'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'

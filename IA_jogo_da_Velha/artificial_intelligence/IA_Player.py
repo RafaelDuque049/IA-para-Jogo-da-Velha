@@ -11,7 +11,7 @@ def IA(game, _won_=None):
     }
     
     num_random = len((open(link_direct.get("m_random"), 'r')).readlines())
-    random, num = open(link_direct.get("m_random"), 'r').read(), int()
+    random = open(link_direct.get("m_random"), 'r').read()
     inicial_game  = str(game)[:]
 
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
@@ -39,7 +39,7 @@ def IA(game, _won_=None):
         
         for action in ['x', 'o']:
             if _pass_:
-                move_game = move_IA(game_game=game, simb=action)
+                move_game = move_IA(game=game, simb=action)
                 
             if str(move_game) != inicial_game:
                 if show_moves: 
