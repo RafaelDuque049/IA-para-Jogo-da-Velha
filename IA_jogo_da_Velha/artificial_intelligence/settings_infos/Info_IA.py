@@ -44,10 +44,11 @@ elif action == '2':
     lines_random = number_lines(link_direct.get("random"))
     lines_standard = number_lines(link_direct.get("standard"))
     
-    sleep(.5)
+    sleep(.3)
     while True: 
         confirm = str(input(f'\n{"=-"*40}\nserá deletado ao todo {(lines_random+lines_standard)} '
             'informações(progresso) da IA. deseja mesmo prosseguir? [S/N]: '))
+        
 
         if confirm.upper() == 'S':
             zero_file(link_direct.get("random")), zero_file(link_direct.get("standard"))
@@ -57,6 +58,7 @@ elif action == '2':
             break
 
         elif confirm.upper() == 'N':
+            sleep(.3)
             print(f'\nfoi cancelado qualquer tipo de ação de deletar informações.'\
                 f'nenhuma informação foi deletada.\n{"=-"*40}\n')
             break
@@ -77,6 +79,7 @@ elif action == '3':
             ' escolha quais informações deletar(Digite o numero zero para cancelar.): '))
         
         if choices == '0':
+            sleep(.3)
             print('\nFoi cancelado ações de deletar progresso da IA.\n')
             break
 
@@ -91,6 +94,7 @@ elif action == '3':
             print('\n/ERRO/\nDigite corretamente quais das opções aparentes deseja deletar.')
             
         else:
+            sleep(.4)
             print('\ninformações deletada com sucesso.\n')
             break
 

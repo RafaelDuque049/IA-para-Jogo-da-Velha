@@ -15,4 +15,3 @@ def winner(p, game, combo):
             none = [game.pop(number[n]) and game.insert(number[n],\
                 ['oOo' if p == 'o' else 'xXx']) for n in range(3)]
             return True
-

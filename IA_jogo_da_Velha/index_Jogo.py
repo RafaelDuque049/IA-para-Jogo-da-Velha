@@ -23,24 +23,27 @@ try:
     while repet != repet_game:
         symb_game = choice(['x', 'o', 'o', 'x'])
         game = list([''] for x in range(9))
+        
+        if test:
+            print(f'BOT recebeu: {symb_game}\nIA recebeu: {"x" if symb_game == "o" else "o"}')
 
         while True:
             part = 0
 
             if test is True: 
                 sleep(1)
-                
-            IA(game, symb="x" if symb_game == "o" else "o")
             
+            IA(game, symb="x" if symb_game == "o" else "o")
+             
             if test is True: 
                 visual_game(game)
 
-            if winner('x', game, plays) is True:
+            if winner("x" if symb_game == "o" else "o", game, plays) is True:
                 Ia += 1
                 
                 if test is True: 
                     visual_game(game)
-                IA(game, _won_=True), IA_Player_Bot(won=True)
+                IA(game, status=True), IA_Player_Bot(won=True)
                 break
 
 
@@ -62,13 +65,12 @@ try:
             if test is True: 
                 visual_game(game)
 
-            if winner('o', game, plays) is True:
+            if winner(symb_game, game, plays) is True:
                 Bot += 1
+                IA_Player_Bot(won=True), IA(game, status=True)
 
                 if test is True:
                     visual_game(game)
-                
-                IA_Player_Bot(won=True), IA(game, _won_=True)
                 break
         
         repet += 1

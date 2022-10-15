@@ -1,10 +1,10 @@
 # artificial intelligence for tic-tac-toe
 
-def IA(game, symb='x' ,_won_=None):
+def IA(game, symb='x', status=None):
     """
     :param-game: receives the current status of the game as a parameter.
     :param-symb: receive which symbol received to play.
-    :param-_won_: receives the information whether the match was won or not.
+    :param-status: receives the information whether the match was won or not.
     
     :return: returns a best move at the moment according to the AI's decision.
     """
@@ -24,7 +24,7 @@ def IA(game, symb='x' ,_won_=None):
 
     # traduz e salva o jogo em uma linguegem compreensível para a IA;
     # translate and save the game in a language incomprehensible to the AI;
-    if _won_ != None:
+    if status != None:
         from artificial_intelligence.Function_IA.identify_pattern import read_game
         
         with open(link_direct.get("moves_random"), 'w') as fold:
@@ -32,7 +32,7 @@ def IA(game, symb='x' ,_won_=None):
 
     # Deletar jogadas erradas aprendidas;
     # Delete learned wrong moves
-    if _won_ is True:
+    if status is True:
         from artificial_intelligence.Function_IA.identify_pattern import del_wrong_plays
         
         del_wrong_plays(game=game)
@@ -40,7 +40,7 @@ def IA(game, symb='x' ,_won_=None):
 
     # verifica a partida e faz um movimento a partir dele;
     # checks the match and makes a move from it;
-    if _won_ == None:
+    if status == None:
         from artificial_intelligence.Function_IA.identify_pattern import move_IA
 
         _pass_ = True
