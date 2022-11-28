@@ -28,7 +28,8 @@ def IA(game, symb='x', status=None):
         from artificial_intelligence.Function_IA.identify_pattern import read_game
         
         with open(link_direct.get("moves_random"), 'w') as fold:
-            fold.write(random), fold.write(read_game(game_p=game))
+            fold.write(random)
+            fold.write(read_game(game_p=game))
 
     # Deletar jogadas erradas aprendidas;
     # Delete learned wrong moves

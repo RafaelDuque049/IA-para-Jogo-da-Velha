@@ -66,15 +66,14 @@ def position(lista):
             if posi_2[1] > number:
                 number, pos = posi_2[1], posi
 
-        bigs.append(list_copy[pos][1]), list_copy.pop(list_copy.index(list_copy[pos]))
+        bigs.append(list_copy[pos][1])
+        list_copy.pop(list_copy.index(list_copy[pos]))
 
     for num in bigs:
         for posis, numb in enumerate(lista):
-            
-            if numb[1] == num:
-                new_list += str(posis)
+            new_list = new_list + str(posis) if numb[1] == num else new_list
 
-    new_list = (new_list[:num_posi-1] if len(new_list) > num_posi else new_list)
+    new_list = new_list[:num_posi-1] if len(new_list) > num_posi else new_list
     
     return (new_list+'\n')
 
@@ -89,30 +88,33 @@ def identify():
         'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
-    with open(link_direct.get("standard_2"), 'r') as fold:
+    with open(link_direct["standard_2"], 'r') as fold:
         moves_in_list = fold.read()
         
-    with open(link_direct.get("random"), 'r') as folder_m:
+    with open(link_direct["random"], 'r') as folder_m:
         no_repet = list()
         
         for move in folder_m.readlines():
             if move not in no_repet:
                 list_pos = list([word, 0] for word in move)
-                list_pos.pop(-1), no_repet.append(move)
+                list_pos.pop(-1)
+                no_repet.append(move)
 
-                with open(link_direct.get("random"), 'r') as folder_s:
+                with open(link_direct["random"], 'r') as folder_s:
                     for numbs in folder_s:
                         
                         for pos, case in enumerate(list_pos):
-                            list_pos[pos][1] += 1 if case[0] == numbs[pos] else 0
+                            valor = int(list_pos[pos][1])
+                            list_pos[pos][1] = valor+1 if case[0] == numbs[pos] else valor+0
+                            
                         nump = position(list_pos)
 
                         if len(nump) != 4: 
-                            None
+                            pass
                         elif nump not in moves and\
                                 nump not in moves_in_list:
                             moves += nump
 
-        standard = open(link_direct.get("standard_2"), 'r').read()
-        with open(link_direct.get("standard_2"), 'w') as stand:
+        standard = open(link_direct["standard_2"], 'r').read()
+        with open(link_direct["standard_2"], 'w') as stand:
             stand.write(standard + moves)

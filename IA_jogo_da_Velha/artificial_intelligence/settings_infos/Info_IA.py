@@ -51,7 +51,8 @@ elif action == '2':
         
 
         if confirm.upper() == 'S':
-            zero_file(link_direct.get("random")), zero_file(link_direct.get("standard"))
+            zero_file(link_direct.get("random"))
+            zero_file(link_direct.get("standard"))
             
             sleep(.7)
             print(f'\ninformações de IA deletada com sucesso.\n{"=-"*40}')

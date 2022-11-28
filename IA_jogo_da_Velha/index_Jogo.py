@@ -5,7 +5,7 @@ from Bot.IA_Bot import IA_Player_Bot
 
 
 repet = Ia = Bot = int()
-plays, folder = list(), open('IA_jogo_da_Velha\Game\Function_game\plays.txt', 'r')
+plays, folder = list(), open('IA_jogo_da_Velha/Game/Function_game/plays.txt', 'r')
 none = [plays.append([int(line[n])-1 for n in [1, 5, 9]]) \
     if line.startswith('_') else None for line in folder.readlines()]
 
@@ -43,7 +43,8 @@ try:
                 
                 if test is True: 
                     visual_game(game)
-                IA(game, status=True), IA_Player_Bot(won=True)
+                IA(game, status=True)
+                IA_Player_Bot(won=True)
                 break
 
 
@@ -67,7 +68,8 @@ try:
 
             if winner(symb_game, game, plays) is True:
                 Bot += 1
-                IA_Player_Bot(won=True), IA(game, status=True)
+                IA_Player_Bot(won=True)
+                IA(game, status=True)
 
                 if test is True:
                     visual_game(game)
