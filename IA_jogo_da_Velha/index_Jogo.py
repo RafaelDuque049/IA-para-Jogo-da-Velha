@@ -5,7 +5,7 @@ from Bot.IA_Bot import IA_Player_Bot
 
 
 repet = Ia = Bot = int()
-plays, folder = list(), open('IA_jogo_da_Velha/Game/Function_game/plays.txt', 'r')
+plays, folder = list(), open('IA_jogo_da_Velha\Game\Function_game\plays.txt', 'r')
 none = [plays.append([int(line[n])-1 for n in [1, 5, 9]]) \
     if line.startswith('_') else None for line in folder.readlines()]
 
@@ -25,7 +25,7 @@ try:
         game = list([''] for x in range(9))
         
         if test:
-            print(f'BOT recebeu: {symb_game}\nIA recebeu: {"x" if symb_game == "o" else "o"}')
+            print(f'\nBOT recebeu: {symb_game}\nIA recebeu: {"x" if symb_game == "o" else "o"}')
 
         while True:
             part = 0
