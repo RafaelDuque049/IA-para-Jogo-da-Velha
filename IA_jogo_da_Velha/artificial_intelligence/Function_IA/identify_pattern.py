@@ -5,11 +5,10 @@ def move_IA(game, check_symb, symb):
     num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game])
         
     if num_cases != 9:
-        with open('IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt', 'r') as moves:
+        with open('artificial_intelligence/moves/standard.txt', 'r') as moves:
 
             for line in moves.readlines():
-                if game[int(line[0])][0] == check_symb and \
-                        game[int(line[1])][0] == check_symb and game[int(line[2])][0] == '':
+                if game[int(line[0])][0] == check_symb and game[int(line[1])][0] == check_symb and game[int(line[2])][0] == str():
                     game[int(line[2])][0] = symb
                     break        
         return game
@@ -27,7 +26,7 @@ def read_game(game_p):
         elif word[0] == 'xXx' or word[0] == 'oOo':
             play += ('1' if word[0] == 'xXx' else '0')
                    
-        elif word[0] == '': 
+        elif word[0] == str(): 
             play += ('2')
             
     return (play+'\n')
@@ -36,15 +35,14 @@ def read_game(game_p):
 # Função para apagar jogadas desnecessarias;
 # Function to delete unnecessary moves
 def del_wrong_plays(game):
-    moves_save, standard = str(), ('IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt')
+    moves_save, standard = str(), ('artificial_intelligence/moves/standard.txt')
         
     with open(standard, 'r') as moves_del:
         for line in moves_del.readlines():
             _pass2_ = True
                 
             for simbl in ['x', 'o']:
-                if game[int(line[0])][0] == simbl and\
-                        game[int(line[1])][0] == simbl and game[int(line[2])][0] == simbl:
+                if game[int(line[0])][0] == simbl and game[int(line[1])][0] == simbl and game[int(line[2])][0] == simbl:
                     _pass2_ = False
                         
             if _pass2_ is True:
@@ -84,8 +82,8 @@ def identify():
     moves, moves_in_list = str(), str()
     
     link_direct = {
-        'standard_2': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt',
-        'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
+        'standard_2': 'artificial_intelligence/moves/standard.txt',
+        'random': 'artificial_intelligence/moves/random.txt'
     }
     
     with open(link_direct["standard_2"], 'r') as fold:
@@ -111,8 +109,7 @@ def identify():
 
                         if len(nump) != 4: 
                             pass
-                        elif nump not in moves and\
-                                nump not in moves_in_list:
+                        elif nump not in moves and nump not in moves_in_list:
                             moves += nump
 
         standard = open(link_direct["standard_2"], 'r').read()

@@ -10,7 +10,7 @@ def IA_Player_Bot(game=[], simb='x', won=False):
     """
     
     if won is False:
-        Folder_move = open('IA_jogo_da_Velha/Game/Function_game/plays.txt', 'r')
+        Folder_move = open('Game/Function_game/plays.txt', 'r')
         x_o, simb_en, passs = simb, 'o' if simb == 'x' else 'x', True
         
         # Função de ataque

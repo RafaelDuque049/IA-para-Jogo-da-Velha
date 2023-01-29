@@ -12,6 +12,5 @@ def visual_game(game):
 def winner(p, game, combo):
     for number in combo:
         if p in game[number[0]] and p in game[number[1]]and p in game[number[2]]:
-            none = [game.pop(number[n]) and game.insert(number[n],\
-                ['oOo' if p == 'o' else 'xXx']) for n in range(3)]
+            none = [game.pop(number[n]) and game.insert(number[n], ['oOo' if p == 'o' else 'xXx']) for n in range(3)]
             return True

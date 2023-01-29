@@ -12,8 +12,8 @@ def number_lines(name_folder):
 
 
 link_direct = {
-    'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
-    'standard': 'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt'
+    'random': 'artificial_intelligence/moves/random.txt',
+    'standard': 'artificial_intelligence/moves/standard.txt'
 }   
 
 option = {
@@ -36,7 +36,7 @@ if action == '1' or action == '':
     lines_standard = number_lines(link_direct.get("standard"))
     
     sleep(.7)
-    print(f'\n{"=-"*40}\nforam salvas no total de ({lines_random}) partidas.\n'\
+    print(f'\n{"=-"*40}\nestão salvas no total de ({lines_random}) partidas.\n'\
         f'foram reconhecidas ({lines_standard}) jogadas.\n{"=-"*40}\n')
 
 
