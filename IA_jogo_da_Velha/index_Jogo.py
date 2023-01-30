@@ -16,11 +16,14 @@ try:
     
     
     input_test = True if "Y" == (input('play normal game? [Y/N]:')).upper() else False
+    
     repet_game = 10 if input_test is True else 5000
+    
     print(f'\n{repet_game} games will be played.\n')
 
     while repet != repet_game:
         symb_game = choice(['x', 'o', 'o', 'x'])
+        
         game = list([''] for x in range(9))
         
         if input_test:
@@ -42,8 +45,11 @@ try:
                 
                 if input_test is True: 
                     visual_game(game)
+                    
                 IA(game, status=True)
+                
                 IA_Player_Bot(won=True)
+                
                 break
 
 
@@ -67,7 +73,9 @@ try:
 
             if winner(symb_game, game, plays) is True:
                 Bot += 1
+                
                 IA_Player_Bot(won=True)
+                
                 IA(game, status=True)
 
                 if input_test is True:
@@ -77,6 +85,7 @@ try:
         repet += 1
         if repet != repet_game:
             print(f'\r{repet}', end='')
+            
         input_test = (True if repet == repet_game-1 else input_test)
         
 except KeyboardInterrupt:

@@ -17,7 +17,7 @@ def IA_Player_Bot(game=[], simb='x', won=False):
         for line in Folder_move.readlines():
             if line.startswith('_'):
                 if x_o in game[int(line[1])-1] and \
-                        x_o in game[int(line[5])-1] and '' in game[int(line[9])-1]:
+                        x_o in game[int(line[5])-1] and str() in game[int(line[9])-1]:
                     game[int(line[9])-1][0], passs = x_o, False
                     break
         Folder_move.seek(0)
@@ -27,7 +27,7 @@ def IA_Player_Bot(game=[], simb='x', won=False):
             for line in Folder_move.readlines():
                 if line.startswith('_'):
                     if simb_en in game[int(line[1])-1] and \
-                            simb_en in game[int(line[5])-1] and '' in game[int(line[9])-1]:
+                            simb_en in game[int(line[5])-1] and str() in game[int(line[9])-1]:
                         game[int(line[9])-1][0], passs = x_o, False
                         break
         Folder_move.close()
@@ -41,3 +41,4 @@ def IA_Player_Bot(game=[], simb='x', won=False):
                 if simb_en not in game[move][0] and x_o not in game[move][0]:
                     game[move][0] = x_o
                     break
+ 

@@ -103,7 +103,7 @@ def identify():
                         
                         for pos, case in enumerate(list_pos):
                             valor = int(list_pos[pos][1])
-                            list_pos[pos][1] = valor+1 if case[0] == numbs[pos] else valor+0
+                            list_pos[pos][1] = valor+1 if case[0] == numbs[pos] else valor
                             
                         nump = position(list_pos)
 
