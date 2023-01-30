@@ -12,8 +12,8 @@ def number_lines(name_folder):
 
 
 link_direct = {
-    'random': 'artificial_intelligence/moves/random.txt',
-    'standard': 'artificial_intelligence/moves/standard.txt'
+    'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
+    'standard': 'IA_jogo_da_velha/artificial_intelligence/moves/standard.txt'
 }   
 
 option = {
@@ -31,7 +31,7 @@ print('\nO que deseja fazer?\n\n'\
 action = str(input("escolha sua ação: "))
 
 
-if action == '1' or action == '':
+if action == '1' or action == str():
     lines_random = number_lines(link_direct.get("random"))
     lines_standard = number_lines(link_direct.get("standard"))
     
