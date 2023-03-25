@@ -5,9 +5,9 @@ def move_IA(game, check_symb, symb):
     num_cases = sum([(1 if numb[0] == 'x' or numb[0] == 'o' else 0) for numb in game])
         
     if num_cases != 9:
-        with open('artificial_intelligence/moves/standard.txt', 'r') as moves:
+        with open(r'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt', 'r') as lines:
 
-            for line in moves.readlines():
+            for line in lines.readlines():
                 if game[int(line[0])][0] == check_symb and game[int(line[1])][0] == check_symb and game[int(line[2])][0] == str():
                     game[int(line[2])][0] = symb
                     break        
@@ -35,7 +35,7 @@ def read_game(game_p):
 # Função para apagar jogadas desnecessarias;
 # Function to delete unnecessary moves
 def del_wrong_plays(game):
-    moves_save, standard = str(), ('artificial_intelligence/moves/standard.txt')
+    moves_save, standard = str(), (r'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt')
         
     with open(standard, 'r') as moves_del:
         for line in moves_del.readlines():
@@ -82,8 +82,8 @@ def identify():
     moves, moves_in_list = str(), str()
     
     link_direct = {
-        'standard_2': 'artificial_intelligence/moves/standard.txt',
-        'random': 'artificial_intelligence/moves/random.txt'
+        'standard_2': r'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt',
+        'random': r'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
     with open(link_direct["standard_2"], 'r') as fold:

@@ -12,8 +12,8 @@ def number_lines(name_folder):
 
 
 link_direct = {
-    'random': 'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
-    'standard': 'IA_jogo_da_velha/artificial_intelligence/moves/standard.txt'
+    'random': r'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt',
+    'standard': r'IA_jogo_da_Velha/artificial_intelligence/moves/standard.txt'
 }   
 
 option = {

@@ -5,7 +5,7 @@ from Bot.IA_Bot import IA_Player_Bot
 
 
 repet = Ia = Bot = int()
-plays, folder = list(), open('Game/Function_game/plays.txt', 'r')
+plays, folder = list(), open(r'IA_jogo_da_Velha/Game/Function_game/plays.txt', 'r')
 none = [plays.append([int(line[n])-1 for n in [1, 5, 9]]) if line.startswith('_') else None for line in folder.readlines()]
 
 try:
@@ -17,14 +17,14 @@ try:
     
     input_test = True if "Y" == (input('play normal game? [Y/N]:')).upper() else False
     
-    repet_game = 10 if input_test is True else 5000
+    repet_game = 10 if input_test is True else 50000
     
     print(f'\n{repet_game} games will be played.\n')
 
     while repet != repet_game:
         symb_game = choice(['x', 'o', 'o', 'x'])
         
-        game = list([''] for x in range(9))
+        game = list([str()] for x in range(9))
         
         if input_test:
             print(f'\nBOT recebeu: {symb_game}\nIA recebeu: {"x" if symb_game == "o" else "o"}')

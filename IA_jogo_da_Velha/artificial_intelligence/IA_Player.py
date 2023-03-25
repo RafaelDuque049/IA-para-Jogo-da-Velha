@@ -13,9 +13,8 @@ def IA(game, symb='x', status=None):
     # "show moves" when it will receive True, it will make decisions for the AI;
     show_moves = False
     
-    
     link_direct = {
-        'moves_random': 'artificial_intelligence/moves/random.txt'
+        'moves_random': r'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
     }
     
     num_random = len((open(link_direct["moves_random"], 'r')).readlines())
