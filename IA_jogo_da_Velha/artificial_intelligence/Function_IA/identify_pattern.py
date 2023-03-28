@@ -53,7 +53,7 @@ def del_wrong_plays(game):
 
 
 # Função para retornar as 3 posições mais repetidas;
-# Function to return the 4 most repeated positions
+# Function to return the 3 most repeated positions
 def position(lista):                                          
     bigs, list_copy, new_list, num_posi = list(), lista[:], str(), 3
 
@@ -115,3 +115,4 @@ def identify():
         standard = open(link_direct["standard_2"], 'r').read()
         with open(link_direct["standard_2"], 'w') as stand:
             stand.write(standard + moves)
+        

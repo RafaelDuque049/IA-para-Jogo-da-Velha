@@ -1,5 +1,8 @@
 
-# Bots/IA
+from random import choice
+from time import sleep
+
+# Bot and IA
 from artificial_intelligence.IA_Player import IA
 from Bot.IA_Bot import IA_Player_Bot
 
@@ -9,9 +12,6 @@ plays, folder = list(), open(r'IA_jogo_da_Velha/Game/Function_game/plays.txt', '
 none = [plays.append([int(line[n])-1 for n in [1, 5, 9]]) if line.startswith('_') else None for line in folder.readlines()]
 
 try:
-    from random import choice
-    from time import sleep
-
     from Game.Function_game.tools_game import visual_game, winner
     
     
@@ -29,7 +29,7 @@ try:
         if input_test:
             print(f'\nBOT recebeu: {symb_game}\nIA recebeu: {"x" if symb_game == "o" else "o"}')
 
-        while True:
+        while (True):
             part = 0
 
             if input_test is True: 
@@ -92,4 +92,4 @@ except KeyboardInterrupt:
     print('\ninterrupted program.')
 
 finally:
-    print(f'\ngames played: {repet}\nIA: {Ia}\nbot: {Bot}')
+    print(f'\ngames played: {repet}\ngames with winner: {sum([Ia, Bot])}\nIA: {Ia}\nbot: {Bot}')

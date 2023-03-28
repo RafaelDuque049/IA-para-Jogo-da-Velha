@@ -12,17 +12,14 @@ def IA(game, symb='x', status=None):
     # quando a váriavel "show_moves" recebendo True, ele vai mostrar as decições tomadas pela IA;
     # "show moves" when it will receive True, it will make decisions for the AI;
     show_moves = False
+    update_moves = 500
     
-    link_direct = {
-        'moves_random': r'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'
-    }
     
+    link_direct = {'moves_random': r'IA_jogo_da_Velha/artificial_intelligence/moves/random.txt'}
     num_random = len((open(link_direct["moves_random"], 'r')).readlines())
     random = open(link_direct["moves_random"], 'r').read()
     inicial_game  = str(game)[:]
 
-    # traduz e salva o jogo em uma linguegem compreensível para a IA;
-    # translate and save the game in a language incomprehensible to the AI;
     if status != None:
         from artificial_intelligence.Function_IA.identify_pattern import read_game
         
@@ -30,16 +27,13 @@ def IA(game, symb='x', status=None):
             fold.write(random)
             fold.write(read_game(game_p=game))
 
-    # Deletar jogadas erradas aprendidas;
-    # Delete learned wrong moves
+
     if status is True:
         from artificial_intelligence.Function_IA.identify_pattern import del_wrong_plays
         
         del_wrong_plays(game=game)
             
 
-    # verifica a partida e faz um movimento a partir dele;
-    # checks the match and makes a move from it;
     if status == None:
         from artificial_intelligence.Function_IA.identify_pattern import move_IA
 
@@ -57,6 +51,7 @@ def IA(game, symb='x', status=None):
                 _pass_ = False
                 
                 return move_game
+            
 
         if _pass_:
             from random import randint as rd
@@ -80,9 +75,10 @@ def IA(game, symb='x', status=None):
 
     # Função para a IA analisar o histórico de partidas e receber novos resultados para a aprendizagem;
     # Function for AI to analyze match history and receive new results for learning;
-    if num_random >= 500:
+    if num_random >= update_moves:
         from artificial_intelligence.Function_IA.identify_pattern import identify 
         
         identify()  
+        
         with open(link_direct["moves_random"], 'w') as close: 
             del close
