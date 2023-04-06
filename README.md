@@ -1,3 +1,5 @@
 # IA para Jogo da Velha
- Bot that memorizes and selects games won or lost to "learn" how to play./
- Bot que memoriza e seleciona partidas ganhas ou perdidas para "aprender" a jogar.
+ <p>Bot que analisa partidas e encontra padrões para "aprender" a jogar.</p>
+ 
+<strong>Aviso: Esta projeto foi criado com o intuito de testar minha capacidade lógica e o conhecimento sobre a linguagem. Logo, não deve ser considerado como um projeto sério.</strong>
+ 
