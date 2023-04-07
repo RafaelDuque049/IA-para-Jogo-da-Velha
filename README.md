@@ -1,5 +1,6 @@
-# IA para Jogo da Velha
- <p>Bot que analisa partidas e encontra padrões para "aprender" a jogar.</p>
+# "Inteligência artificial" para jogar tic-tac-toe
+<strong>Esta projeto foi criado com o intuito de testar minha capacidade lógica e o conhecimento sobre a linguagem. Logo, não deve ser considerado como um projeto sério.</strong>
+
+ <p>Esse bot foi criado com o objetivo ganhar partidas analisando padrões.</p> 
  
-<strong>Aviso: Esta projeto foi criado com o intuito de testar minha capacidade lógica e o conhecimento sobre a linguagem. Logo, não deve ser considerado como um projeto sério.</strong>
- 
+ <strong>&#9888;&#65039;Logo haverá explicação do funcionamento de cada bloco de código do bot.&#9888;&#65039;</strong>
