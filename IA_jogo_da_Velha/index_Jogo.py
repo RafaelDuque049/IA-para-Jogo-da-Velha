@@ -17,7 +17,7 @@ try:
     
     input_test = True if "Y" == (input('play normal game? [Y/N]:')).upper() else False
     
-    repet_game = 10 if input_test is True else 50000
+    repet_game = 10 if input_test is True else 5000
     
     print(f'\n{repet_game} games will be played.\n')
 
